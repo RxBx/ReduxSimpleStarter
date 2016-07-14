@@ -16,14 +16,16 @@ class SearchBar extends Component {//ES6 dependent class decl
 		//below is nec to invoke thru 'super' a capability on parent Component class
 		super(props);
 		//create the 'state' as object w desired keys/props, and start value
-		this.state = { term: ''}; // 'term' is to hold 'search terms' from input
+		this.state = { term: 'starting value'}; // 'term' is to hold 'search terms' from input
 	}
 
 	render() { //new syntax for adding method to a class in ES6
 		//this JSX render is now a method on class
 		return (
 			<div>
-				<input onChange= {event => this.setState({ term: event.target.value })} />
+				<input
+					value={this.state.term}
+					onChange= {event => this.setState({ term: event.target.value })} />
 
 			</div>
 		);
