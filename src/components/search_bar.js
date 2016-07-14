@@ -10,7 +10,7 @@ import React, { Component } from 'react'; //need to import so JSX commands can a
 
 class SearchBar extends Component {//ES6 dependent class decl
 // then accesses all functionality React.Component class
-	//estab the 'state' through below
+	//estab the 'state' through below technique
 	//constructor is ES6 method attached to all Class objects
 	constructor(props) {
 		//below is nec to invoke thru 'super' a capability on parent Component class
@@ -26,7 +26,6 @@ class SearchBar extends Component {//ES6 dependent class decl
 				<input
 					value={this.state.term}
 					onChange= {event => this.setState({ term: event.target.value })} />
-
 			</div>
 		);
 
