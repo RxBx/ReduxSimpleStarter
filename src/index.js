@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search'; //brings in package
 import SearchBar from './components/search_bar'; //brings this code thru rel file path
 import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
+
 
 //from console.developers.google.com after searching for YouTube Data API v3
 const API_KEY = 'AIzaSyBroEwil-Wsm4pobLlpGUIcqWVGpYCJqJU';
@@ -23,6 +25,7 @@ class App extends Component {
 		return (
 			<div>
 				<SearchBar />
+				<VideoDetail video={this.state.videos[0]} />
 				<VideoList videos={this.state.videos} />
 			</div> //JSX syntax- subset of JS, "looks like" HTML, but JSX
 		);

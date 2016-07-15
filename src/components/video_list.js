@@ -13,7 +13,7 @@ const VideoList = (props) => {
 		return <VideoListItem key={video.etag} video={video} />
 	});
 
-	//below const videoItems array of JSX/HTML is interpreted by React into HTML list items
+	//below const "videoItems array" of JSX/HTML is interpreted by React into HTML indiv list items
 	return (
 		<ul className="col-md-4 list-group">
 
