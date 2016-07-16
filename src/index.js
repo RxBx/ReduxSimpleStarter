@@ -14,10 +14,16 @@ const API_KEY = 'AIzaSyBroEwil-Wsm4pobLlpGUIcqWVGpYCJqJU';
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { videos: [] };
+		this.state = { 
+			videos: [],
+			selectedVideo: null
+		};
 
 		YTSearch({key: API_KEY, term: 'surfboards'}, (videos) => {
-			this.setState({ videos }); //ES6 allows compacting this syntax from  ({videos: videos})
+			this.setState({ 
+			videos: videos, 
+			selectedVideo: videos[0]
+			}); //ES6 allows compacting the syntax ({videos}) from  ({videos: videos})
 		});
 	}
 
@@ -25,8 +31,10 @@ class App extends Component {
 		return (
 			<div>
 				<SearchBar />
-				<VideoDetail video={this.state.videos[0]} />
-				<VideoList videos={this.state.videos} />
+				<VideoDetail video={this.state.selectedVideo} />
+				<VideoList 
+					onVideoSelect={selectedVideo => this.setState({selectedVideo}) } //A function that passes through to other components
+					videos={this.state.videos} />
 			</div> //JSX syntax- subset of JS, "looks like" HTML, but JSX
 		);
 	} //And App is a 'class' not an instance; must create instance for use in DOM

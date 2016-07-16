@@ -10,7 +10,13 @@ const VideoList = (props) => {
 	const videoItems = props.videos.map((video) => {
 		//running the videos items through VideoListItem JSX function
 		//uses YT etag property to create unique key for each list item
-		return <VideoListItem key={video.etag} video={video} />
+		//onVideoSelect is passthru from index to VideoListItem to register selected video item
+		return (
+			<VideoListItem 
+			onVideoSelect={props.onVideoSelect} //passing along a function from index to video_list_item
+			key={video.etag} 
+			video={video} />
+			);
 	});
 
 	//below const "videoItems array" of JSX/HTML is interpreted by React into HTML indiv list items
