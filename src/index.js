@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search'; //brings in package
@@ -33,9 +34,14 @@ class App extends Component {
 	}
 
 	render() {
+		//below uses Lodash debounce to encap videoSearch in a 300ms delay version as const videoSearch
+		const videoSearch = _.debounce((term) => {this.videoSearch(term)}, 300);
+		//and this means we just use videoSearch as function in onSearchTermChange callback, and not
+		//<SearchBar onSearchTermChange={term => this.videoSearch(term)} />
+
 		return (
 			<div>
-				<SearchBar onSearchTermChange={term => this.videoSearch(term)} />
+				<SearchBar onSearchTermChange={videoSearch} />
 				<VideoDetail video={this.state.selectedVideo} />
 				<VideoList 
 					onVideoSelect={selectedVideo => this.setState({selectedVideo}) } //A function that passes through to other components
