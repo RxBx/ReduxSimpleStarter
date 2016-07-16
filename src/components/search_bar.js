@@ -22,7 +22,7 @@ class SearchBar extends Component {//ES6 dependent class decl
 	render() { //new syntax for adding method to a class in ES6
 		//this JSX render is now a method on class
 		return (
-			<div>
+			<div className="search-bar">
 				<input
 					value={this.state.term}
 					onChange= {event => this.setState({ term: event.target.value })} />
