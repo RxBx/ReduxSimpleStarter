@@ -16,7 +16,7 @@ class SearchBar extends Component {//ES6 dependent class decl
 		//below is nec to invoke thru 'super' a capability on parent Component class
 		super(props);
 		//create the 'state' as object w desired keys/props, and start value
-		this.state = { term: 'starting value'}; // 'term' is to hold 'search terms' from input
+		this.state = { term: ''}; // 'term' is to hold 'search terms' from input
 	}
 
 	render() { //new syntax for adding method to a class in ES6
@@ -25,7 +25,7 @@ class SearchBar extends Component {//ES6 dependent class decl
 			<div className="search-bar">
 				<input
 					value={this.state.term}
-					onChange= {event => this.setState({ term: event.target.value })} />
+					onChange={event => this.onInputChange(event.target.value)} />
 			</div>
 		);
 
@@ -34,6 +34,11 @@ class SearchBar extends Component {//ES6 dependent class decl
 		//prior version
 		//return <input onChange={this.onInputChange} />; // DOM HTML event handler then triggers JS
 		//alt condensed: return <input onChange= {event => console.log(event.target.value)} />;
+	}
+
+	onInputChange(term) {
+		this.setState({term});
+		this.props.onSearchTermChange(term);
 	}
 
 	//onInputChange(event) { // event handler (or handleInputChange) - a naming convention
